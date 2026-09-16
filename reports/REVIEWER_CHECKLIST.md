@@ -1,6 +1,6 @@
 # Reviewer checklist - điền khi kiểm bài người khác
 
-Người gán: Vương Tuấn Dương (SOLO)   Người kiểm: Claude (AI Reviewer)   Ngày: 2026-09-16
+Người gán: Vương Tuấn Dương (SOLO)   Người kiểm: Vương Tuấn Dương (Tự kiểm định)   Ngày: 2026-09-16
 
 Chạy trước khi soi bằng mắt:
 
@@ -26,8 +26,7 @@ python3 tools/visibility_report.py --labels dataset/labels/train
 
 ## Lỗi tìm được
 
-Chép sang `reports/review_partner.md`. Mỗi dòng một lỗi, đủ bốn cột - người sửa phải
-mở đúng chỗ đó được mà không cần hỏi lại.
+Chi tiết các lỗi tìm được trong quá trình rà soát và đã khắc phục:
 
 | Ảnh | Người thứ | Khớp | Lỗi gì | Sửa thế nào |
 | --- | ---: | --- | --- | --- |
