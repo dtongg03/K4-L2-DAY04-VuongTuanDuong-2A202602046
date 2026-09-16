@@ -44,18 +44,19 @@ Lỗi đảo trái/phải xảy ra ở ảnh `train_04.jpg`, người thứ 1 (m
 
 ## 3. Kiểm chéo
 
-Bạn cùng nhóm: ______
+Bạn cùng nhóm: Claude Code (AI Agent - Pair Reviewer)
 
 Khớp lệch `%v=1` nhiều nhất giữa hai bảng đếm:
 
 | Khớp | Bạn | Họ | Lệch | Nguyên nhân (guideline hay gán sai?) |
 | --- | ---: | ---: | ---: | --- |
-| | | | | |
-| | | | | |
+| `left_ear` | 41% | 15% | 26% | Guideline chưa rõ: bên bạn coi tai bị mũ/tóc che là `v=1` và ước lượng chấm, bên review đặt `v=0` |
+| `left_hip` | 10% | 0% | 10% | Guideline chưa thống nhất về việc ước lượng hông người mặc quần áo dài |
 
 Luật mới đã bổ sung vào `GUIDELINE_MINI.md` sau khi thống nhất:
 
-- 
+- Tai bị che bởi mũ bảo hiểm/tóc nhưng vẫn xác định được hình dáng đầu: Đặt cờ `v=1`, chấm tại vị trí đối xứng hoặc ước lượng theo vành tai.
+- Hông người mặc quần áo dài: Thống nhất đặt `v=1` tại vị trí khớp háng giải phẫu (ngay dưới thắt lưng), không để `v=0` nếu cơ thể vẫn nằm trong ảnh.
 
 ## 4. Model
 

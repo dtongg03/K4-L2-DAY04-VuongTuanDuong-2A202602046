@@ -1,6 +1,6 @@
 # Reviewer checklist - điền khi kiểm bài người khác
 
-Người gán: Vương Tuấn Dương (SOLO)   Người kiểm: Vương Tuấn Dương (Tự kiểm định)   Ngày: 2026-09-16
+Người gán: Vương Tuấn Dương (SOLO)   Người kiểm: Claude Code (AI Agent)   Ngày: 2026-09-16
 
 Chạy trước khi soi bằng mắt:
 

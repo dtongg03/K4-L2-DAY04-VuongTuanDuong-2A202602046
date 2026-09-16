@@ -46,8 +46,8 @@
 - Vì sao: Mũi nằm hoàn toàn ở mặt đối diện, không có cơ sở suy ra vị trí chính xác
 - Nếu người khác quyết ngược lại thì model học sai cái gì: Nếu đặt v=1 và đoán bừa vị trí, model học sai vị trí mũi khi người quay lưng, tạo bias hệ thống
 
-## 4. Sau khi so visibility report với bạn cùng nhóm
+## 4. Sau khi so visibility report với bạn cùng nhóm (Claude Code AI Agent)
 
-- Khớp lệch `%v=1` nhiều nhất: `______` (bạn `___%` / họ `___%`)
-- Nguyên nhân là **guideline chưa rõ** hay **một trong hai bên gán sai**: 
-- Luật mới bổ sung vào mục 2 sau khi thống nhất: 
+- Khớp lệch `%v=1` nhiều nhất: `left_ear` (bạn `41%` / họ `15%`)
+- Nguyên nhân là **guideline chưa rõ** hay **một trong hai bên gán sai**: Guideline chưa rõ - ranh giới giữa việc tai bị che hoàn toàn bởi mũ/tóc hay vẫn còn dấu vết giải phẫu của đầu.
+- Luật mới bổ sung vào mục 2 sau khi thống nhất: Tai bị che bởi mũ bảo hiểm hoặc tóc nhưng vẫn còn dấu vết của đầu thì thống nhất đặt `v=1` tại vị trí giải phẫu ước lượng, không đánh `v=0` nếu phần đầu vẫn trong khung ảnh.
