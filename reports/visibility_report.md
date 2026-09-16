@@ -1,28 +1,28 @@
 # Visibility report
 
 - Thư mục nhãn: `dataset\labels\train`
-- 20 ảnh, 31 skeleton, trung bình 13.52 khớp có v > 0 mỗi người
-- Tổng: v=2 405 | v=1 14 | v=0 108
+- 20 ảnh, 29 skeleton, trung bình 15.9 khớp có v > 0 mỗi người
+- Tổng: v=2 391 | v=1 70 | v=0 32
 
 | # | Khớp | v=2 | v=1 | v=0 | %v=1 |
 | ---: | --- | ---: | ---: | ---: | ---: |
-| 0 | nose | 24 | 0 | 7 | 0% |
-| 1 | left_eye | 22 | 0 | 9 | 0% |
-| 2 | right_eye | 23 | 0 | 8 | 0% |
-| 3 | left_ear | 18 | 2 | 11 | 6% |
-| 4 | right_ear | 20 | 2 | 9 | 6% |
-| 5 | left_shoulder | 30 | 1 | 0 | 3% |
-| 6 | right_shoulder | 31 | 0 | 0 | 0% |
-| 7 | left_elbow | 28 | 0 | 3 | 0% |
-| 8 | right_elbow | 29 | 0 | 2 | 0% |
-| 9 | left_wrist | 25 | 2 | 4 | 6% |
-| 10 | right_wrist | 24 | 1 | 6 | 3% |
-| 11 | left_hip | 27 | 2 | 2 | 6% |
-| 12 | right_hip | 28 | 1 | 2 | 3% |
-| 13 | left_knee | 19 | 1 | 11 | 3% |
-| 14 | right_knee | 21 | 1 | 9 | 3% |
-| 15 | left_ankle | 17 | 0 | 14 | 0% |
-| 16 | right_ankle | 19 | 1 | 11 | 3% |
+| 0 | nose | 21 | 8 | 0 | 28% |
+| 1 | left_eye | 18 | 10 | 1 | 34% |
+| 2 | right_eye | 20 | 9 | 0 | 31% |
+| 3 | left_ear | 16 | 12 | 1 | 41% |
+| 4 | right_ear | 21 | 7 | 1 | 24% |
+| 5 | left_shoulder | 28 | 1 | 0 | 3% |
+| 6 | right_shoulder | 29 | 0 | 0 | 0% |
+| 7 | left_elbow | 27 | 2 | 0 | 7% |
+| 8 | right_elbow | 27 | 0 | 2 | 0% |
+| 9 | left_wrist | 23 | 5 | 1 | 17% |
+| 10 | right_wrist | 24 | 1 | 4 | 3% |
+| 11 | left_hip | 26 | 3 | 0 | 10% |
+| 12 | right_hip | 27 | 2 | 0 | 7% |
+| 13 | left_knee | 23 | 3 | 3 | 10% |
+| 14 | right_knee | 23 | 1 | 5 | 3% |
+| 15 | left_ankle | 18 | 4 | 7 | 14% |
+| 16 | right_ankle | 20 | 2 | 7 | 7% |
 
 ## Đọc bảng này thế nào
 
