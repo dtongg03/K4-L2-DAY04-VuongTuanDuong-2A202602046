@@ -1,4 +1,4 @@
-# Mini guideline - nhóm: Nhóm 1  |  người gán: Vương Tuấn Dương  |  ngày: 2026-09-16
+# Mini guideline - nhóm: SOLO  |  người gán: Vương Tuấn Dương  |  ngày: 2026-09-16
 
 > Điền file này **trong lúc** gán nhãn, không phải sau khi xong. Mỗi lần bạn dừng lại
 > hơn 10 giây để phân vân, đó là một dòng phải ghi vào đây.

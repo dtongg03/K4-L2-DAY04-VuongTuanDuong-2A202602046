@@ -1,6 +1,6 @@
 # Báo cáo Ngày 4 - Keypoint & Pose
 
-Họ tên: Vương Tuấn Dương   Nhóm: Nhóm 1   Ngày: 2026-09-16
+Họ tên: Vương Tuấn Dương   Nhóm: SOLO   Ngày: 2026-09-16
 
 ## 1. Nhãn của tôi
 
