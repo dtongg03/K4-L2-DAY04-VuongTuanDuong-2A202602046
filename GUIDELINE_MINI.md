@@ -46,8 +46,9 @@
 - Vì sao: Mũi nằm hoàn toàn ở mặt đối diện, không có cơ sở suy ra vị trí chính xác
 - Nếu người khác quyết ngược lại thì model học sai cái gì: Nếu đặt v=1 và đoán bừa vị trí, model học sai vị trí mũi khi người quay lưng, tạo bias hệ thống
 
-## 4. Sau khi so visibility report với bạn cùng nhóm
+## 4. Tự rà soát cờ visibility (Thực hiện độc lập)
 
-- Khớp lệch `%v=1` nhiều nhất: `left_hip` (bạn `6%` / họ `___%`)
-- Nguyên nhân là **guideline chưa rõ** hay **một trong hai bên gán sai**: Guideline chưa rõ - hông là khớp giải phẫu không nhìn thấy trực tiếp, cần thống nhất luật ước lượng
-- Luật mới bổ sung vào mục 2 sau khi thống nhất: Hông luôn là v=1 nếu người còn trong khung ảnh, đặt chấm tại điểm giữa eo và đùi, dựa theo đường viền cơ thể nhìn qua quần áo
+- Hình thức thực hiện: Làm bài độc lập, tự rà soát qua `visibility_report.md`.
+- Khớp có tỉ lệ `%v=1` cao nhất: `left_ear` (41%), `left_eye` (34%), `right_eye` (31%).
+- Phân tích: Tỉ lệ $v=1$ cao ở vùng đầu mặt phản ánh đúng tính chất bộ ảnh có nhiều người đội mũ bảo hiểm/quay lưng.
+- Quy tắc thống nhất: Các khớp bị che khuất một phần hoặc giải phẫu ước lượng được (tai, hông) phải gắn cờ $v=1$ và đặt chấm, chỉ đặt $v=0$ khi khớp thật sự ra khỏi biên ảnh.

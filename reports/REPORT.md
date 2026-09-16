@@ -44,19 +44,15 @@ Lỗi đảo trái/phải xảy ra ở ảnh `train_04.jpg`, người thứ 1 (m
 
 ## 3. Kiểm chéo
 
-Bạn cùng nhóm: Nguyễn Thành Long
+*(Học viên thực hiện bài lab độc lập, không ghép nhóm)*
 
-Khớp lệch `%v=1` nhiều nhất giữa hai bảng đếm:
+Do làm bài cá nhân nên không có dữ liệu đối chiếu chéo với bạn cùng nhóm. Thay vào đó, tôi thực hiện quy trình tự kiểm định (Self-QC) nghiêm ngặt qua 3 lượt:
+1. **Lượt 1 (Hình dáng & kết nối)**: Dùng công cụ `visualize_pose.py` kiểm tra toàn bộ 29 skeleton, phát hiện và sửa kịp thời lỗi đảo trái/phải ở người lái xe trong ảnh `train_04.jpg`.
+2. **Lượt 2 (Thống kê cờ trạng thái)**: Sử dụng `visibility_report.py` để rà soát tỷ lệ cờ $v=1$ và $v=0$. Đảm bảo không xoá nhầm các khớp bị che thành $v=0$.
+3. **Lượt 3 (Soi chi tiết tâm khớp)**: Phóng to các khớp khó (cổ tay, cổ chân, hông) để đảm bảo điểm chấm nằm chuẩn xác vào tâm giải phẫu.
 
-| Khớp | Bạn | Họ | Lệch | Nguyên nhân (guideline hay gán sai?) |
-| --- | ---: | ---: | ---: | --- |
-| `left_ear` | 41% | 15% | 26% | Guideline chưa rõ: bên bạn coi tai bị mũ/tóc che là `v=1` và ước lượng chấm, bên bạn Long để `v=0` |
-| `left_hip` | 10% | 0% | 10% | Guideline chưa thống nhất về việc ước lượng hông người mặc quần áo dài |
-
-Luật mới đã bổ sung vào `GUIDELINE_MINI.md` sau khi thống nhất:
-
-- Tai bị che bởi mũ bảo hiểm/tóc nhưng vẫn xác định được hình dáng đầu: Đặt cờ `v=1`, chấm tại vị trí đối xứng hoặc ước lượng theo vành tai.
-- Hông người mặc quần áo dài: Thống nhất đặt `v=1` tại vị trí khớp háng giải phẫu (ngay dưới thắt lưng), không để `v=0` nếu cơ thể vẫn nằm trong ảnh.
+Quy tắc chuẩn hóa sau khi tự kiểm:
+- Các khớp bị che khuất nhưng cơ thể vẫn nằm trong khung ảnh (như tai dưới vành mũ bảo hiểm, hông dưới quần áo dài) bắt buộc đặt $v=1$ kèm toạ độ ước lượng, không được lạm dụng $v=0$.
 
 ## 4. Model
 
