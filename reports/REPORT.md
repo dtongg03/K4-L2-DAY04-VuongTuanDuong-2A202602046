@@ -62,28 +62,32 @@ Luật mới đã bổ sung vào `GUIDELINE_MINI.md` sau khi thống nhất:
 
 | Chỉ số | yolo26n-pose gốc | Sau fine-tune | Chênh |
 | --- | ---: | ---: | ---: |
-| pose_mAP50 | 0.812 | 0.825 | +0.013 |
-| pose_mAP50-95 | 0.584 | 0.591 | +0.007 |
-| pose_precision | 0.795 | 0.810 | +0.015 |
-| pose_recall | 0.742 | 0.751 | +0.009 |
-| box_mAP50-95 | 0.620 | 0.622 | +0.002 |
+| pose_mAP50 | 0.8450 | 0.8450 | +0.0000 |
+| pose_mAP50-95 | 0.6853 | 0.6908 | +0.0055 |
+| pose_precision | 0.9734 | 0.9792 | +0.0058 |
+| pose_recall | 0.8462 | 0.8462 | +0.0000 |
+| box_mAP50-95 | 0.8119 | 0.8041 | -0.0078 |
 
 ### Trả lời năm câu hỏi ở cuối notebook
 
-1. **`pose_mAP50-95` thay đổi bao nhiêu?**
-   `pose_mAP50-95` tăng nhẹ khoảng +0.007. Dù tập train chỉ có 20 ảnh, dữ liệu chất lượng cao (không còn lỗi đảo trái/phải, các khớp che `v=1` được ước lượng nhất quán) giúp model thích nghi tốt hơn với các tư thế người che khuất phức tạp mà không làm thoái hóa trọng số gốc.
+1. **`pose_mAP50-95` thay đổi bao nhiêu sau fine-tune? Nếu nó giảm, hãy giải thích: 20 ảnh của bạn dạy được model điều gì mà COCO chưa dạy, và nó làm hỏng điều gì?**
+   - Chỉ số `pose_mAP50-95` tăng nhẹ **+0.0055** (từ 0.6853 lên 0.6908), đồng thời `pose_precision` cũng tăng từ 0.9734 lên 0.9792 (+0.0058). 
+   - Dù tập train chỉ gồm 20 ảnh, model không bị giảm hiệu năng nhờ việc nhãn đã qua rework chuẩn (không còn lỗi đảo trái/phải, các khớp che `v=1` được ước lượng nhất quán theo giải phẫu). 20 ảnh này dạy cho model khả năng định vị chính xác hơn ở các tư thế bị che khuất và người quay nghiêng. Tuy nhiên, `box_mAP50-95` giảm nhẹ -0.0078 do kích thước tập train quá nhỏ khiến phân bố bounding box bị co cụm (bias nhẹ về kích thước người của 20 ảnh).
 
 2. **`box_mAP` và `pose_mAP` chênh nhau bao nhiêu? Model tìm *người* dễ hơn hay tìm *khớp* dễ hơn? Vì sao?**
-   `box_mAP` (0.622) cao hơn `pose_mAP` (0.591). Model tìm người dễ hơn tìm khớp vì bounding box người là vùng bao lớn với nhiều đặc trưng ngữ cảnh tổng thể (quần áo, hình dáng đầu, thân), trong khi keypoint đòi hỏi độ chính xác cục bộ cấp độ vài pixel và dễ bị ảnh hưởng bởi che khuất hoặc xoay góc.
+   - `box_mAP50-95` (0.8041) cao hơn `pose_mAP50-95` (0.6908) là **0.1133** (~11.33%).
+   - Model tìm **người** dễ hơn tìm **khớp** rất nhiều. Nguyên nhân là vì bounding box bao quát toàn bộ cơ thể người với vùng diện tích lớn, có nhiều đặc trưng tổng thể rõ rệt (hình khối đầu, thân, màu sắc quần áo). Ngược lại, khớp (keypoint) chỉ là một điểm nhỏ vài pixel, dễ bị che khuất, biến dạng giải phẫu theo tư thế chuyển động phức tạp, và đòi hỏi độ chính xác cục bộ rất khắt khe.
 
-3. **Một ảnh test model đoán sai - gọi tên lỗi theo bốn loại của slide 43:**
-   Ảnh `test_03.jpg`, người đi xe đạp bị che chân: Model bị **lệch nhẹ** ở khớp cổ chân do bị bàn đạp che khuất và **trượt hẳn** ở khớp cổ tay do nhầm với tay lái xe.
+3. **Ở mục 5, tìm một ảnh model đoán sai. Gọi tên lỗi theo bốn loại của slide 43 (lệch nhẹ / đảo trái/phải / nhầm người / trượt hẳn):**
+   - Ở ảnh test `test_03.jpg` (người đi xe đạp bị che chân): Model bị **lệch nhẹ** ở khớp cổ chân do bị bàn đạp và nan hoa che khuất, đồng thời bị **trượt hẳn** ở khớp cổ tay do model bắt nhầm điểm tâm sang đầu nắm của ghi-đông xe đạp.
 
-4. **Ảnh nào có OKS thấp nhất giữa nhãn của bạn và model? Ai đúng, và bạn dựa vào đâu?**
-   Ảnh `train_06.jpg` (người lái xe máy quay lưng). Nhãn của tôi đúng hơn vì model tự động dự đoán các khớp mặt bị trôi ra phía trước kính chắn gió xe, trong khi người lái xe quay lưng hoàn toàn nên các điểm này thực tế bị che hoàn toàn ở phía đối diện.
+4. **Ở mục 6, ảnh nào có OKS thấp nhất giữa bạn và model? Ai đúng - và bạn dựa vào đâu để nói vậy?**
+   - Ảnh có OKS thấp nhất giữa nhãn của tôi và model là ảnh `train_06.jpg` (người lái xe phân khối lớn màu vàng quay lưng).
+   - **Tôi đúng**, vì người lái xe quay lưng hoàn toàn về phía sau, toàn bộ khuôn mặt nằm ở mặt trước và bị che khuất hoàn toàn bởi mũ bảo hiểm và đầu. Model dựa trên prior có sẵn của COCO nên đã "đoán mò" các điểm mũi và mắt trôi ra phía trước kính chắn gió xe máy (trượt hẳn). Nhãn của tôi xác định đúng các điểm mặt ở trạng thái bị che/không nhìn thấy theo bằng chứng thực tế của góc chụp.
 
-5. **Ảnh bạn gán tệ nhất có *cũng* là ảnh model đoán tệ nhất không? Nếu có, điều đó nói gì về bức ảnh đó?**
-   Có, đó là ảnh `train_06.jpg` và `train_15.jpg`. Điều này cho thấy đây là những bức ảnh có góc nhìn khó (người quay lưng, tư thế gập người, nhiều vật che khuất như xe máy, mũ bảo hiểm), tạo độ bất định cao cho cả người gán nhãn lẫn thuật toán AI.
+5. **Trong `tools/evaluate_pose_annotations.py` bạn đã có OKS nhãn-của-bạn vs gold. Ảnh nào bạn gán tệ nhất *cũng* là ảnh model đoán tệ nhất? Nếu có, điều đó nói gì về ảnh đó?**
+   - Có. Ảnh có OKS vs gold thấp nhất trong bài gán của tôi là `train_14.jpg` (OKS = 0.7281) và `train_15.jpg` (OKS = 0.8233), và đây cũng chính là những bức ảnh mà model gặp khó khăn và đạt OKS thấp nhất.
+   - **Điều đó nói lên rằng**: Đây là những bức ảnh có độ bất định thị giác vốn có rất cao (intrinsic visual ambiguity). Ví dụ ở `train_14.jpg`, hai người đứng ở khoảng cách xa, độ phân giải thấp, thời tiết sương mù mờ ảo, lại đội mũ ô che kín mặt và mặc quần áo thụng. Khi bằng chứng thị giác bị suy giảm nghiêm trọng, cả con người lẫn mô hình AI đều không thể xác định vị trí khớp với độ tin cậy tuyệt đối.
 
 ## 5. Một rule evidence bạn đã dùng
 
